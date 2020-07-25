@@ -62,9 +62,10 @@ import numpy as np
 np.set_printoptions(precision=4)
 
 # print the blocks configuration
-from blocks.config import config
-config.default_seed = SEED
-print 'blocks default_seed:', config.config['default_seed']
+# from blocks.config import config #Original code, revised by Gao Maosen in 2020
+# import config 
+# config.default_seed = SEED
+# print 'blocks default_seed:', config.config['default_seed']
 
 if hyper_params['blocks_extensions_bokeh']:
     # log into bokeh server

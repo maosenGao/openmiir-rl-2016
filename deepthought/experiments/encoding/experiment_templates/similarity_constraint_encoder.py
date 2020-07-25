@@ -30,7 +30,7 @@ class SimilarityConstraintEncoderExperiment(GenericNNEncoderExperiment):
         :return:
         """
         from theano import tensor
-        from blocks.model import Model
+        from blocks.model import Model  
 
         # Note: this has to match the sources defined in the dataset
         indices = [tensor.ivector('{}_indices'.format(i)) for i in range(3)]

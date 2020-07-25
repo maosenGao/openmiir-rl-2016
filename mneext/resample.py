@@ -12,44 +12,47 @@ import mne
 # def resample(self, sfreq, npad=100, window='boxcar',
 #              stim_picks=None, n_jobs=1, verbose=None):
 def fast_resample_mne(raw, sfreq, stim_picks=None, preserve_events=True, res_type='sinc_best', verbose=None):
+    
     """Resample data channels.
 
     Resamples all channels. The data of the Raw object is modified inplace.
 
     The Raw object has to be constructed using preload=True (or string).
 
-    WARNING: The intended purpose of this function is primarily to speed
-    up computations (e.g., projection calculation) when precise timing
-    of events is not required, as downsampling raw data effectively
-    jitters trigger timings. It is generally recommended not to epoch
-    downsampled data, but instead epoch and then downsample, as epoching
-    downsampled data jitters triggers.
+    WARNING:
+    
+    The intended purpose of this function is primarily to speed up computations (e.g., projection calculation) when precise timing of events is not required, as downsampling raw data effectively jitters trigger timings. 
+    
+    It is generally recommended not to epoch downsampled data, but instead epoch and then downsample, as epoching downsampled data jitters triggers.
 
     Parameters
     ----------
     raw : nme raw object
         Raw data to filter.
-    sfreq : float
+    sfreq :
+    float
         New sample rate to use.
-    stim_picks : array of int | None
-        Stim channels. These channels are simply subsampled or
-        supersampled (without applying any filtering). This reduces
-        resampling artifacts in stim channels, but may lead to missing
-        triggers. If None, stim channels are automatically chosen using
-        mne.pick_types(raw.info, meg=False, stim=True, exclude=[]).
+    stim_picks : 
+    array of int | None
+        Stim channels.
+        These channels are simply subsampled or supersampled (without applying any filtering). 
+        This reduces resampling artifacts in stim channels, but may lead to missing triggers. 
+        If None, stim channels are automatically chosen usingzded mne.
+        pick_types(raw.info, meg=False, stim=True, exclude=[]).
     res_type : str
-        If `scikits.samplerate` is installed, :func:`librosa.core.resample`
-        will use ``res_type``. (Chooae between 'sinc_fastest', 'sinc_medium'
-        and 'sinc_best' for the desired speed-vs-quality trade-off.)
+        If `scikits.samplerate` is installed, :func:`librosa.core.resample` will use ``res_type``. 
+        (Chooae between 'sinc_fastest', 'sinc_medium' and 'sinc_best' for the desired speed-vs-quality trade-off.)
         Otherwise, it will fall back on `scipy.signal.resample`
-    verbose : bool, str, int, or None
+    verbose : 
+    bool, str, int, or None
         If not None, override default verbose level (see mne.verbose).
         Defaults to self.verbose.
 
     Notes
     -----
-    For some data, it may be more accurate to use npad=0 to reduce
-    artifacts. This is dataset dependent -- check your data!
+    For some data, it may be more accurate to use npad=0 to reduce artifacts.
+    This is dataset dependent -- check your data!
+    
     """
     self = raw  # this keeps the mne code intact
 
