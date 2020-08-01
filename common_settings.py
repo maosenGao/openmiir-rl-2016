@@ -1,7 +1,12 @@
 base_selectors = dict()
 
+# import sys
+# sys.path.append("d:\\anacon\\lib\\site-packages")
+
 SEED = 42
 hdf5name = 'data/OpenMIIR-Perception-512Hz.hdf5'
+
+# from __future__ import print_function
 
 # defaults
 hyper_params = dict(
